@@ -2,7 +2,7 @@ import * as THREE from './libs/three137/three.module.js';
 import { GLTFLoader } from './libs/three137/GLTFLoader.js';
 import { RGBELoader } from './libs/three137/RGBELoader.js';
 import { NPCHandler } from './NPCHandler.js';
-import { LoadingBar } from './libs/LoadingBar.js';
+//import { LoadingBar } from './libs/LoadingBar.js';
 import { Pathfinding } from './libs/pathfinding/Pathfinding.js';
 import { User } from './User.js';
 import { Controller } from './Controller.js';
@@ -14,8 +14,8 @@ class Game{user
         
 		this.clock = new THREE.Clock();
 
-        this.loadingBar = new LoadingBar();
-        this.loadingBar.visible = false;
+        //this.loadingBar = new LoadingBar();
+        //this.loadingBar.visible = false;
 
 		this.assetsPath = './assets/';
         
@@ -106,10 +106,10 @@ class Game{user
 
           this.scene.environment = envMap;
 
-		  this.loadingBar.visible = !this.loadingBar.loaded;
+		  //this.loadingBar.visible = !this.loadingBar.loaded;
         }, 
 		xhr => {
-			this.loadingBar.update( 'envmap', xhr.loaded, xhr.total );
+			//this.loadingBar.update( 'envmap', xhr.loaded, xhr.total );
 		},
 		err => {
             console.error( err.message );
@@ -128,7 +128,7 @@ class Game{user
     loadEnvironment(){
     	const loader = new GLTFLoader( ).setPath(`${this.assetsPath}factory/`);
         
-        this.loadingBar.visible = true;
+        //this.loadingBar.visible = true;
 		
 		// Load a glTF resource
 		loader.load(
@@ -195,12 +195,12 @@ class Game{user
 
 				this.initPathfinding(this.navmesh);
 
-				this.loadingBar.visible = !this.loadingBar.loaded;
+				//this.loadingBar.visible = !this.loadingBar.loaded;
 			},
 			// called while loading is progressing
 			xhr => {
 
-				this.loadingBar.update('environment', xhr.loaded, xhr.total);
+				//this.loadingBar.update('environment', xhr.loaded, xhr.total);
 				
 			},
 			// called when loading has errors

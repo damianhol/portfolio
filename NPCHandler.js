@@ -6,7 +6,7 @@ import {Skeleton, Raycaster} from './libs/three137/three.module.js';
 class NPCHandler{
     constructor( game ){
         this.game = game;
-		this.loadingBar = this.game.loadingBar;
+		//this.loadingBar = this.game.loadingBar;
         this.load();
 		//this.initMouseHandler();
 	}
@@ -42,7 +42,7 @@ class NPCHandler{
 		const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath( '../../libs/three137/draco/' );
         loader.setDRACOLoader( dracoLoader );
-        this.loadingBar.visible = true;
+        //this.loadingBar.visible = true;
 		
 		// Load a GLTF resource
 		loader.load(
@@ -59,7 +59,7 @@ class NPCHandler{
 			// called while loading is progressing
 			xhr => {
 
-				this.loadingBar.update( 'warionanimations2', xhr.loaded, xhr.total );
+				//this.loadingBar.update( 'warionanimations2', xhr.loaded, xhr.total );
 
 			},
 			// called when loading has errors
@@ -122,7 +122,7 @@ class NPCHandler{
 			
 		});
 
-		this.loadingBar.visible = !this.loadingBar.loaded;
+		//this.loadingBar.visible = !this.loadingBar.loaded;
 
 		this.game.startRendering();
 	}

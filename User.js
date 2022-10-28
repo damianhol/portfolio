@@ -25,7 +25,7 @@ constructor(game, pos, heading){
    //add the root group to the scene
    game.scene.add(this.root);
    // refrence to the loading bar
-   this.loadingBar = game.loadingBar;
+   //this.loadingBar = game.loadingBar;
    // call the load method
    this.load();
    // to reposition the character
@@ -130,7 +130,7 @@ load(){
 	   },
 	   // called while loading is progressing
 	   xhr => {
-		   this.loadingBar.update( 'user', xhr.loaded, xhr.total );
+		   //this.loadingBar.update( 'user', xhr.loaded, xhr.total );
 	   },
 	   // called when loading has errors
 	   err => {
