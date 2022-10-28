@@ -8,15 +8,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    * {
+        font-family: 'VT323';
+    }
       body{
           margin: 0;
-      }  
+      } 
+
+      #myBtn {
+        position: absolute;
+        margin: 10px;
+        width: 8%;
+        height: 10%;
+      }
+
+       /* popUp background */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Popup */
+.modal-content {
+    text-align: center;
+    color: rgb(187, 187, 187);
+    background-color: rgba(39, 39, 39, 0.75);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: none;
+    width: 50%; /* Could be more or less, depending on screen size */
+    border-radius: 3%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
   </style>
 
   <title>Three.js Porfolio - Damian Holub</title>
 </head>
 
 <body>
+
+    
+        
+         <!-- Trigger/Open The Modal -->
+<img id="myBtn" src="./assets/icon.png" alt="info icon">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1>Hi there! Welcome to my porfolio</h1>
+    <h4>Go ahead and take a look around</h4>
+    <h2>W,A,S,D to walk & Click and Drag your Mouse to look around</h2>
+  </div>
+
+</div> 
+
     <script type="module">
         import { Game } from './Game.js';
 
@@ -24,6 +96,32 @@
             const game = new Game(); 
             window.game = game;
         });
+
+        // Get the modal
+const modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+const btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
     </script>
 </body>
 
