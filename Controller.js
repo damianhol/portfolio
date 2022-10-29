@@ -42,9 +42,9 @@ class Controller{
         this.checkForGamepad();
 
         // check for mobile device
-        //if ('ontouchstart' in document.documentElement){
         //if (ture) for testing touch controllers on desktop
-        if (true){
+        //if (true){
+        if ('ontouchstart' in document.documentElement){
             this.initOnscreenController();
         } else {
             this.initKeyControl();
