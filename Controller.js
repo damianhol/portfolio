@@ -42,9 +42,9 @@ class Controller{
         this.checkForGamepad();
 
         // check for mobile device
-        //if ('ontouchstart' in document.documentElement){
         //if (ture) for testing touch controllers on desktop
-        if (true){
+        //if (true){
+        if ('ontouchstart' in document.documentElement){
             this.initOnscreenController();
         } else {
             this.initKeyControl();
@@ -129,7 +129,7 @@ class Controller{
                 break;
             case 32:
                 this.keys.space = true;
-                this.user.action = 'jump';
+                this.jump();
                 break;                                           
         }
     }
@@ -194,7 +194,7 @@ class Controller{
     }
 
     jump(){
-        console.log("Fire");
+        this.user.action = 'jump';
     }
 
 
