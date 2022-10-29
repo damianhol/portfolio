@@ -81,7 +81,7 @@ class Controller{
             document.body.appendChild(twerkBtn);
 
             // class object that allows us to use the class method showTouchController
-            this.touchController = { joystick1, joystick2, jumpBtn};
+            this.touchController = { joystick1, joystick2, jumpBtn, twerkBtn};
         }
 
     initKeyControl(){
