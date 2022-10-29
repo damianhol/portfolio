@@ -42,9 +42,9 @@ class Controller{
         this.checkForGamepad();
 
         // check for mobile device
+        //if ('ontouchstart' in document.documentElement){
         //if (ture) for testing touch controllers on desktop
-        //if (true){
-        if ('ontouchstart' in document.documentElement){
+        if (true){
             this.initOnscreenController();
         } else {
             this.initKeyControl();
@@ -71,9 +71,15 @@ class Controller{
             const joystick2 = new JoyStick(options2);
 
             const jumpBtn = document.createElement('div');
-            jumpBtn.style.cssText = "position:absolute; bottom:55px; width:40px; height:40px; background:#ffffff; border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
+            jumpBtn.style.cssText = "position:absolute; bottom:55px; width:40px; height:40px; background:#ffffff; border:#444 solid medium; border-radius:50%; left:40%; transform:translateX(-50%); animation:fadeIn 160s;";
             jumpBtn.addEventListener('click', this.jump.bind(this));
             document.body.appendChild(jumpBtn);
+
+            const twerkBtn = document.createElement('div');
+            twerkBtn.style.cssText = "position:absolute; bottom:55px; width:40px; height:40px; background:#ffffff; border:#444 solid medium; border-radius:50%; left:60%; transform:translateX(-50%); animation:fadeIn 160s;";
+            twerkBtn.addEventListener('click', this.twerk.bind(this));
+            document.body.appendChild(twerkBtn);
+
             // class object that allows us to use the class method showTouchController
             this.touchController = { joystick1, joystick2, jumpBtn};
         }
@@ -125,7 +131,7 @@ class Controller{
                 break;
             case 84:
                 this.keys.t = true;
-                this.user.action = 'twerk';
+                this.twerk();
                 break;
             case 32:
                 this.keys.space = true;
@@ -195,6 +201,10 @@ class Controller{
 
     jump(){
         this.user.action = 'jump';
+    }
+
+    twerk(){
+        this.user.action = 'twerk';
     }
 
 
