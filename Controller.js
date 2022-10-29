@@ -1,4 +1,4 @@
-import { Object3D, Camera, Vector3, Quaternion, Raycaster } from './libs/three137/three.module.js';
+import { Object3D, Camera, Vector3, Quaternion, Raycaster, ColorKeyframeTrack } from './libs/three137/three.module.js';
 import { JoyStick } from './libs/JoyStick.js';
 //import { Game } from './Game.js';
 
@@ -42,7 +42,9 @@ class Controller{
         this.checkForGamepad();
 
         // check for mobile device
-        if ('ontouchstart' in document.documentElement){
+        //if ('ontouchstart' in document.documentElement){
+        //if (ture) for testing touch controllers on desktop
+        if (true){
             this.initOnscreenController();
         } else {
             this.initKeyControl();
@@ -50,8 +52,31 @@ class Controller{
     }
 
     initOnscreenController(){
-        
-    }
+        //joystick class adds 2 div(2 controllers) elements to the dom
+            const options1 = {
+                left: true,
+                app: this,
+                onMove: this.onMove
+            };
+            
+            const joystick1 = new JoyStick(options1);
+            
+            // right joystick will call onlook method
+            const options2 = {
+                right: true,
+                app: this,
+                onMove: this.onLook
+            };
+
+            const joystick2 = new JoyStick(options2);
+
+            const jumpBtn = document.createElement('div');
+            jumpBtn.style.cssText = "position:absolute; bottom:55px; width:40px; height:40px; background:#ffffff; border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
+            jumpBtn.addEventListener('click', this.jump.bind(this));
+            document.body.appendChild(jumpBtn);
+            // class object that allows us to use the class method showTouchController
+            this.touchController = { joystick1, joystick2, jumpBtn};
+        }
 
     initKeyControl(){
         document.addEventListener('keydown', this.keyDown.bind(this));
@@ -80,7 +105,7 @@ class Controller{
 
         this.touchController.joystick1.visible = mode;
         this.touchController.joystick2.visible = mode;
-        this.touchController.fireBtn.style.display = mode ? 'block' : 'none';
+        this.touchController.jumpBtn.style.display = mode ? 'block' : 'none';
     }
 
     keyDown(e){
@@ -168,7 +193,7 @@ class Controller{
         this.onLook(-offsetY, offsetX);
     }
 
-    fire(){
+    jump(){
         console.log("Fire");
     }
 
