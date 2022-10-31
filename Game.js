@@ -139,7 +139,6 @@ class Game{user
 
 				this.scene.add( gltf.scene );
                 this.factory = gltf.scene;
-				this.fans = [];
 
 				const mergeObjects = {elements2:[], elements5:[], terrain:[]};
 
@@ -153,9 +152,7 @@ class Game{user
 							//child.material.transparent = true;
 							//child.material.opacity = 0.2;
 							child.material.visible = false;
-						}else if (child.name.includes('fan')){
-							this.fans.push( child );
-						}else if (child.material.name.includes('flower')){
+						}else if (child.material.name.includes('grass')){
 							mergeObjects.elements2.push(child);
 							child.castShadow = true;
 						}else if (child.material.name.includes('tree')){
@@ -164,7 +161,7 @@ class Game{user
 						}else if (child.material.name.includes('leaf')){
 							mergeObjects.terrain.push(child);
 							child.castShadow = true;
-						}else if (child.material.name.includes('mountain')){
+						}else if (child.material.name.includes('wario')){
 							child.receiveShadow = true;
 						}else if ( child.material.name.includes('wood')){
 							child.castShadow = true;
@@ -219,11 +216,6 @@ class Game{user
 	render() {
 		const dt = this.clock.getDelta();
 
-		if (this.fans !== undefined){
-            this.fans.forEach(fan => {
-                fan.rotateY(dt); 
-            });
-        }
 		if (this.npcHandler !== undefined ) this.npcHandler.update(dt);
 		if (this.user !== undefined && this.user.ready ){
 			this.user.update(dt);
