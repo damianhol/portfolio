@@ -133,7 +133,7 @@ class Game{user
 		// Load a glTF resource
 		loader.load(
 			// resource URL
-			'factorymapv99.glb',
+			'finalfactory2-v1.glb',
 			// called when the resource is loaded
 			gltf => {
 
