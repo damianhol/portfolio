@@ -105,13 +105,7 @@ load(){
 		   this.object.scale.set(0.01, 0.01, 0.01);
 
 		   //traverse gltf scene
-		   this.object.traverse( child => {
-			   if (child.isMesh){
-				   child.castShadow = true;
-				   // if there's a rifle store a refrence to this child
-				   if (child.name.includes('Rifle')) this.rifle = child;
-			   }
-		   })
+		//    
 		   
 		   //create animations object
 		   this.animations = {};
@@ -145,15 +139,7 @@ set action(name){
    const clip = this.animations[name.toLowerCase()];
 
    if (clip !== undefined){
-	   // if we find a weapon we have set rifle.directionobject we get quaternion we should use for this animation, if we find a quaternion we copy it to rifle.quaternion property
-	   if (this.rifle && this.rifleDirection){
-		   const q = this.rifleDirection[name.toLowerCase()];
-		   if (q !== undefined){
-			   this.rifle.quaternion.copy(q);
-			   // in blender z is up in three.js y is up so rotate the weapon in the X axis
-			   this.rifle.rotateX(1.57);
-		   }
-	   }
+	   
 
 	   const action = this.mixer.clipAction( clip );
 	   
