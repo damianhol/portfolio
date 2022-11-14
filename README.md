@@ -19,3 +19,4 @@ To Do:
   - Fix NPCs pathfiding,
   - add combat with fixed bugs
 
+![obraz](https://user-images.githubusercontent.com/108236883/201677197-7c3bfb15-1387-4837-b4fc-b737a3f2b88c.png)
